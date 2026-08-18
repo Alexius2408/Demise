@@ -7,7 +7,7 @@ from obj import OBJ
 
 
 class Enemy(OBJ):
-    def __init__(self, filename, move_speed=10, gravity=1, position=np.zeros(3), rotation=np.zeros(3),
+    def __init__(self, filename, move_speed=15, gravity=1, position=np.zeros(3), rotation=np.zeros(3),
                  scale=np.ones(3), hitbox_size=np.array([3.0, 3.0, 3.0]),
                  hp=3, damage=1.0, swapyz=False):
         super().__init__(filename, position, rotation, scale, hitbox_size, swapyz)
@@ -56,7 +56,7 @@ class Enemy(OBJ):
                     try:
                         self.position[1] -= self.gravity * dt
                     except:
-                        print("Fuck")
+                        pass
 
     def kill_if_dead(self, enemies):
         if not self.hp:

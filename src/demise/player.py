@@ -89,7 +89,7 @@ def render_2D_texture(surface, x, y, screen_width, screen_height):
 class Player:
     def __init__(self, position=None, rx=0, ry=0, move_speed=50, gravity=35,
                  direction=None, up=None, hitbox_size=None, hp=200.0, ammo=100,
-                 velocity=None, acceleration=None, friction=0.975, max_speed=500.0):
+                 velocity=None, acceleration=None, friction=1.0, max_speed=500.0):
         # Standardwerte für numpy-Arrays
         self.position = np.array([0.0, 10.0, 0.0]) if position is None else position
         self.direction = np.array([1.0, 0.0, 0.0]) if direction is None else direction
@@ -236,7 +236,7 @@ class Player:
                         empty_sound.set_volume(1.0)
                         self.shoot_channel.play(empty_sound)
             except:
-                print("Fuck")
+                pass
         if self.weapon_type == "instant":
             mouse_buttons = pygame.mouse.get_pressed()
             if mouse_buttons[0]:
@@ -450,52 +450,3 @@ class Player:
                 empty_sound = pygame.mixer.Sound('assets/Sound/WeaponEntirelyEmptySound.wav')
                 empty_sound.set_volume(1.0)
                 self.shoot_channel.play(empty_sound)
-
-
-def change_weapon(self):
-    if self.kills <= 20:
-        self.which_weapon = [1]
-        self.weapon_type = "cooldown"
-        if self.kills == 1:
-            self.mag_size = 7
-            self.mag_ammo = 7
-            self.ammo = 61
-            self.reserve_ammo = self.ammo - self.mag_size
-            self.enemy_hp = 2
-    elif self.kills <= 60:
-        self.which_weapon = "assets/Model/Weapon/Revolver/Revolver.obj"
-        self.weapon_type = "cooldown"
-        if self.kills == 21:
-            self.mag_size = 12
-            self.mag_ammo = 12
-            self.ammo = 111
-            self.reserve_ammo = self.ammo - self.mag_size
-            self.enemy_hp = 2
-    elif self.kills <= 140:
-        self.which_weapon = "assets/Model/Weapon/Shotgun/Shotgun.obj"
-        self.weapon_type = "cooldown"
-        if self.kills == 61:
-            self.mag_size = 6
-            self.mag_ammo = 6
-            self.ammo = 90
-            self.enemy_hp = 1
-            self.reserve_ammo = self.ammo - self.mag_size
-    elif self.kills <= 200:
-        self.which_weapon = "assets/Model/Weapon/Minigun/Mini_gun.obj"
-        self.weapon_type = "instant"
-        if self.kills == 141:
-            self.mag_size = 33
-            self.mag_ammo = 33
-            self.ammo = 305
-            self.enemy_hp = 1
-            self.reserve_ammo = self.ammo - self.mag_size
-    elif self.kills > 500:
-        self.mode = True
-        self.god_mode()
-    if self.which_weapon != self.gun_rn:
-        self.gun_obj.free()
-        self.gun_obj = OBJ(self.which_weapon, scale=[0.15, 0.15, 0.15],
-                           hitbox_size=[0.0, 0.0, 0.0],
-                           rotation=[90.0, 0.0, 0.0])
-        self.gun_obj.generate()
-        self.gun_rn = self.which_weapon

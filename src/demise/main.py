@@ -1,6 +1,5 @@
 from enemy import *
 from graphics import init_graphics
-from obj import *
 from player import *
 from start_menu import make_start_menu
 
@@ -143,13 +142,20 @@ while True:
             objects = [untitled_obj, weapons[0]]
             player = Player(position=np.array([-109.50993, 0.0, 109.5]), hp=hp_max, ammo=ammo_max)
             hitboxes_map = [
+                # Außenwände
                 Hitbox(position=np.array([-193.237, 10.0756, 112.126]), size=np.array([23.687, 60.6338, 175.9088])),
-                Hitbox(position=np.array([-19.7332, 10.0756, 112.126]), size=np.array([23.687, 60.6338, 175.90882])),
-                Hitbox(position=np.array([-100.0, 10.0756, 22.0]), size=np.array([175.90882, 60.6338, 23.687])),
+                Hitbox(position=np.array([-24.7332, 24.0756, 112.126]), size=np.array([23.687, 60.6338, 175.90882])),
+                Hitbox(position=np.array([-100.0, 16.0756, 27.0]), size=np.array([175.90882, 60.6338, 23.687])),
                 Hitbox(position=np.array([-100.0, 10.0756, 195.0]), size=np.array([175.90882, 60.6338, 23.687])),
-                Hitbox(position=np.array([-141.76, 3.2, 110.510933]), size=np.array([21.5, 15.5, 21.5])),
-                Hitbox(position=np.array([-74.1163, 3.2, 110.510933]), size=np.array([21.5, 15.5, 21.5])),
+
+                # Boxewn mitte
+                Hitbox(position=np.array([-141.76, 3.2, 112.510933]), size=np.array([21.7, 15.5, 21.7])),
+                Hitbox(position=np.array([-74.1163, 3.2, 112.510933]), size=np.array([21.7, 15.5, 21.7])),
+
+                # Brücke
                 Hitbox(position=np.array([-108.50993, 10.7, 110.510933]), size=np.array([50.5, 1.0, 8.5])),
+
+                # wand hinten
                 Hitbox(position=np.array([-109.50993, 1.5, 53.5]), size=np.array([24.0, 9.55143, 2.8])),
                 Hitbox(position=np.array([-109.50993, 1.5, 164.5]), size=np.array([24.0, 9.55143, 2.8]))
             ]
@@ -230,15 +236,27 @@ while True:
         if death_list != [False for i in range(len(enemies))]:
             player.bodycount += 1
             player.ammo = 100
-            weapon_id = (player.bodycount // 3) % 4
+            weapon_id = (player.bodycount // 10) % 4
             objects[1] = weapons[weapon_id]
             if weapon_id < 3:
                 player.weapon_type = "cooldown"
+                player.mag_size = 12
+                player.mag_ammo = player.mag_size
+                player.reserve_ammo = player.ammo - player.mag_size
+                player.mag_ammo_bevore = player.mag_ammo
+                player.ammo_bevore = player.ammo
+                player.ammo = 100
                 player.damage = weapon_id * 1.5
                 player.cooldown = (weapon_id + 1) * 100
             else:
                 player.weapon_type = "instant"
                 player.cooldown = 150
+                player.ammo = 250
+                player.mag_size = 25
+                player.mag_ammo = 25
+                player.mag_ammo_bevore = player.mag_ammo
+                player.ammo_bevore = player.ammo
+                player.reserve_ammo = player.ammo - player.mag_size
                 player.damage = 0.5
 
         # Setup 2D projection für Overlay

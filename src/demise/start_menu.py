@@ -155,8 +155,8 @@ def make_start_menu(screen, Game_name, option_lines, credits_lines, scale, curre
         which_button = None
         for i, button in enumerate(buttons[:len(buttons) - 1]):
             if (
-                    ((screen_width - button.get_width()) // 2 + int(90 * scale) < mouse_pos[0] < (
-                            screen_width + button.get_width()) // 2 - int(75 * scale))
+                    ((screen_width - button.get_width()) // 2 + int(130 * scale) < mouse_pos[0] < (
+                            screen_width + button.get_width()) // 2 - int(65 * scale))
                     and
                     (int(screen_height * 0.6 + i * screen_height * 0.17) - int(280 * scale) < mouse_pos[1] < int(
                         screen_height * 0.6 + i * screen_height * 0.17) - int(140 * scale))
