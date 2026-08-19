@@ -9,7 +9,7 @@
 project = 'DEMISE'
 copyright = '2025, Alexander Sief & Simon Schober'
 author = 'Alexander Sief & Simon Schober'
-release = 'Alpha 1.0'
+release = '1.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
