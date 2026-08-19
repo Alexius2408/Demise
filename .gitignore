@@ -260,5 +260,3 @@ http-client.private.env.json
 
 # PyPI configuration file
 .pypirc
-
-assets/

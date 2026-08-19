@@ -12,13 +12,13 @@ Link to the competition: [ Htl Bau Informatik Design - pgc25 ](https://www.htl-i
 
 ## Credits
 
-**Programming**  
-your mum & Simon Schober
+**Programming:**  
+Alexander Sief & Simon Schober
 
-**Graphics**  
+**Graphics:**  
 Vladimir Kandalintsev
 
-**Sound**  
+**Sound:**  
 Simon Schober
 
 <br>
@@ -33,7 +33,7 @@ Simon Schober
 ### While Playing
 <img src="assets/readme_img/game.png" alt="DEMISE gameplay screenshot" width="800" />
 
-<br
+<br>
 
 <img src="assets/readme_img/game_2.png" alt="DEMISE gameplay screenshot 2" width="800" />
 
@@ -44,19 +44,21 @@ Simon Schober
 ### Windows:
 1. Download the Repo:
 ```
-git clone https://github.com/Alexius2408/Demise.git
+git clone https://github.com/Alexius2408/DEMISE.git
 cd ./Demise
 ```
 
 2. Install Python version 3.11:
-    - Python 3.11: [python.org](https://www.python.org/downloads/release/python-3111/)
+```
+py install 3.11
+```
 
 3. Make a venv and install the requirements.txt:
 ```
 py -3.11 -m venv .venv
 .\.venv\Scripts\activate
-python -m pip install --upgrade pip
-python -m pip install -r .\requirements.txt
+pip install --upgrade pip
+pip install -r .\requirements.txt
 ```
 
 4. Run the main.py and enjoy:
