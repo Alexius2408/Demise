@@ -8,6 +8,8 @@ All the graphic you see in the game was made by us or Vladimir Kandalintsev
 
 Link to the competition: [ Htl Bau Informatik Design - pgc25 ](https://www.htl-ibk.at/pgc25-21-gewinner-und-3-praemierte/#gallery-2)
 
+**Status:** Archived
+
 <br>
 
 ## Credits
